@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/07 15:09:50 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/07 17:12:37 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,10 @@ char	**get_map(void)
 			map[j] = "#";
 		else if (check_comment(str) == 3)
 			map[j] = "L";
+		else if (check_comment(str) == 1 || check_comment(str) == 4)
+			j++;
+		else
+			std_err();
 	}
 	map[j] = NULL;
 	j = 0;
