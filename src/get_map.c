@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/06 16:11:41 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/07 15:09:50 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,27 +53,50 @@ int		name_check(char *str)
 	return (1);
 }
 
+char	*get_name(char *str)
+{
+	int		i;
+	char	*ret;
+
+	ret = ft_strnew(100);
+	i = 0;
+	while (str[i] != ' ')
+	{
+		ret[i] = str[i];
+		i++;
+	}
+	ret[i] = 7;
+	ret[i + 1] = 0;
+	return (ret);
+}
+
 char	**get_map(void)
 {
 	char	*str;
 	char	**map;
-	int		i;
 	int		j;
 
 	map = (char **)malloc(sizeof(char *) * 2000);
 	map = malloc_2d(map);
 	j = 0;
-	i = 1;
-	while (i)
+	while (get_next_line(0, &str))
 	{
-		i = get_next_line(0, &str);
 		if (name_check(str) == 1)
 		{
-			printf("%d", j);
-			map[j][0] = j;
+			map[j] = ft_strjoin(map[j], get_name(str));
 			j++;
-			printf("\n<<%d>>\n", j);
 		}
+		else if (check_comment(str) == 2)
+			map[j] = "#";
+		else if (check_comment(str) == 3)
+			map[j] = "L";
+	}
+	map[j] = NULL;
+	j = 0;
+	while (map[j])
+	{
+		printf("<<%s\n", map[j]);
+		j++;
 	}
 	return (map);
 }

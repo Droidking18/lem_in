@@ -6,7 +6,7 @@
 #    By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/26 14:50:13 by dkaplan           #+#    #+#              #
-#    Updated: 2018/08/06 16:50:31 by dkaplan          ###   ########.fr        #
+#    Updated: 2018/08/07 15:21:19 by dkaplan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,11 @@ $(NAME):
 all: $(NAME)
 
 clean:
+	make clean -C libft
 	rm -f $(NAME)
 
 fclean: clean
+	make fclean -C libft
 	rm -f $(NAME)
 
 re: fclean all
