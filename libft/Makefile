@@ -28,7 +28,7 @@ CSOURCE = $(SOURCES:.c=.o)
 INCLUDES = libft.h
 
 $(NAME):
-	gcc -Wall -Werror -Wextra -I $(INCLUDES) -c $(SOURCES)
+	gcc -Wall -Werror -Wextra -I.. $(INCLUDES) -c $(SOURCES)
 	ar rc $(NAME) $(CSOURCE)
 	ranlib $(NAME)
 

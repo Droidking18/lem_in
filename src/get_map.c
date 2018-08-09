@@ -93,7 +93,7 @@ char	**get_map(void)
 		else if (check_comment(str) == 1 || check_comment(str) == 4)
 			j++;
 		else
-			std_err();
+			link_val(map);
 	}
 	map[j] = NULL;
 	j = 0;

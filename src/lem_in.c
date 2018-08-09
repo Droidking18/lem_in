@@ -20,4 +20,6 @@ int		main(void)
 
 	ants = get_number();
 	map = get_map();
+	(void)ants;
+	(void)map;
 }

@@ -20,5 +20,6 @@ int		check_comment(char *str);
 int		check_valid(char *str);
 char	**get_map(void);
 char	**malloc_2d(char **map);
+void	link_val(t_lemin map);
 
 #endif
