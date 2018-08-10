@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/07 17:12:37 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/10 11:59:40 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,37 +70,37 @@ char	*get_name(char *str)
 	return (ret);
 }
 
-char	**get_map(void)
+t_lemin		get_map(void)
 {
-	char	*str;
-	char	**map;
-	int		j;
+	t_lemin		map;
+	int			j;
 
-	map = (char **)malloc(sizeof(char *) * 2000);
-	map = malloc_2d(map);
+	map.map = (char **)malloc(sizeof(char *) * 2000);
+	map.map = malloc_2d(map.map);
 	j = 0;
-	while (get_next_line(0, &str))
+	while (get_next_line(0, &map.first))
 	{
-		if (name_check(str) == 1)
+		if (name_check(map.first) == 1)
 		{
-			map[j] = ft_strjoin(map[j], get_name(str));
+			map.map[j] = ft_strjoin(map.map[j], get_name(map.first));
 			j++;
 		}
-		else if (check_comment(str) == 2)
-			map[j] = "#";
-		else if (check_comment(str) == 3)
-			map[j] = "L";
-		else if (check_comment(str) == 1 || check_comment(str) == 4)
+		else if (check_comment(map.first) == 2)
+			map.map[j] = "#";
+		else if (check_comment(map.first) == 3)
+			map.map[j] = "L";
+		else if (check_comment(map.first) == 1 || check_comment(map.first) == 4)
 			j++;
 		else
 			link_val(map);
 	}
-	map[j] = NULL;
+	map.map[j] = NULL;
 	j = 0;
-	while (map[j])
+	while (map.map[j])
 	{
-		printf("<<%s\n", map[j]);
+		printf("<<%s\n", map.map[j]);
 		j++;
 	}
+	printf("%s", map.first);
 	return (map);
 }
