@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:56:54 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/06 15:49:58 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/13 17:46:28 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		get_number(void)
 		if (check_comment(str) == 1 || check_comment(str) == 4)
 			ant = 0;
 		else if (check_invalid(str) == 1)
-			std_err();
+			std_err(": number of ants must be a digit.\n");
 		else
 		{
 			ant = ft_atoi(str);
@@ -49,6 +49,6 @@ int		get_number(void)
 		free(str);
 	}
 	if (ant > 2147483647 || ant < -2147483648 || !ant)
-		std_err();
+		std_err(": ants can not overflow, nor can they be.\n");
 	return ((int)ant);
 }

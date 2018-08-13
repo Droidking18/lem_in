@@ -6,15 +6,16 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 12:06:19 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/07 15:41:33 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/13 17:45:53 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lemin.h"
 
-void	std_err(void)
+void	std_err(char *str)
 {
-	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd("Error ", 2);
+	ft_putstr_fd(str, 2);
 	exit(0);
 }
 
@@ -39,7 +40,8 @@ char	**malloc_2d(char **map)
 	i = 0;
 	while (i < 2001)
 	{
-		map[i] = (char *)malloc(sizeof(char) * 20);
+		map[i] = (char *)malloc(sizeof(char) * 200);
+		ft_bzero(map[i], 200);
 		i++;
 	}
 	return (map);

@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 16:13:45 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/10 12:11:59 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/13 17:47:10 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,41 +31,42 @@ int			dash_cnt(char *str)
 
 int			name_val(char **map, char *str)
 {
-	int	i;
 	int	j;
 	int	k;
+	int ret;
+	char **arr;
 
 	k = 0;
-	j = 1;
-	i = 0;
-	while (map[k])
+	j = 0;
+	arr = ft_strsplit(str, '-');
+	while (arr[k] && map[j])
 	{
-		while (map[k][j] == str[i] && str[i])
+		j = 0;
+		while (map[j])
 		{
-			i++;
-			j++;
-			if (map[k][j] != str[i])
+			ret = ft_strcmp(arr[k], &(map[j][1]));
+			if (ret == 0)
 			{
-				printf("\n\n<<%c>>, <<%c>>\n\n", str[i], map[k][j]);
-				return (0);
+				k++;
+				break ;
 			}
+			j++;
 		}
-		k++;
-		j = 1;
-		i = 0;
 	}
-	return (1);
+	return (k == 2 ? 1 : 0);
 }
 
 void			link_val(t_lemin map)
 {
 	if (dash_cnt(map.first) != 1)
-		std_err();
+		std_err(": invalid link. Too many dashes.\n");
 	if (name_val(map.map, map.first) == 0)
-		std_err();
+		std_err(": bad link. Links to non existing room.\n");
 	else
+	{
 		ft_putstr("Linking is OK");
-	return ;
+		exit(0);
+	}
 }
 
 t_lemin			fill_map(t_lemin map)

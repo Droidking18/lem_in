@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/10 11:59:40 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/13 17:47:42 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,39 +35,27 @@ int		name_check(char *str)
 
 	i = 0;
 	if (space_count(str) != 2)
-		return (0);
+		std_err(": incorrect amount of spaces.\n");
 	while (str[i] != ' ')
 		i++;
 	i++;
 	while (ft_isdigit(str[i]) == 1)
 	{
 		if (ft_isdigit(str[i] == 0 && str[i] != ' '))
-				std_err();
+				std_err(": coords must be digits.\n");
 		i++;
 	}
 	i++;
 	while (ft_isdigit(str[i]) == 1)
 		i++;
 	if (str[i])
-		std_err();
+		std_err(": bad coordinates.\n");
 	return (1);
 }
 
 char	*get_name(char *str)
 {
-	int		i;
-	char	*ret;
-
-	ret = ft_strnew(100);
-	i = 0;
-	while (str[i] != ' ')
-	{
-		ret[i] = str[i];
-		i++;
-	}
-	ret[i] = 7;
-	ret[i + 1] = 0;
-	return (ret);
+	return ((ft_strsplit(str, ' '))[0]);
 }
 
 t_lemin		get_map(void)
@@ -80,6 +68,7 @@ t_lemin		get_map(void)
 	j = 0;
 	while (get_next_line(0, &map.first))
 	{
+		map.map[j][0] = ' ';
 		if (name_check(map.first) == 1)
 		{
 			map.map[j] = ft_strjoin(map.map[j], get_name(map.first));
@@ -92,15 +81,10 @@ t_lemin		get_map(void)
 		else if (check_comment(map.first) == 1 || check_comment(map.first) == 4)
 			j++;
 		else
+		{
+			map.map[j] = 0;
 			link_val(map);
+		}
 	}
-	map.map[j] = NULL;
-	j = 0;
-	while (map.map[j])
-	{
-		printf("<<%s\n", map.map[j]);
-		j++;
-	}
-	printf("%s", map.first);
 	return (map);
 }
