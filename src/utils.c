@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 12:06:19 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/14 10:36:53 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/14 16:19:23 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	**malloc_2d(char **map)
 	int i;
 
 	i = 0;
+	map = (char **)malloc(sizeof(char *) * 2000);
 	while (i < 2001)
 	{
 		map[i] = (char *)malloc(sizeof(char) * 200);
@@ -51,7 +52,7 @@ char	**malloc_2d(char **map)
 int		**malloc_2d_int(int size)
 {
 	int		**arr;
-	int 	i;
+	int		i;
 
 	i = 0;
 	arr = (int **)malloc(sizeof(int *) * size);

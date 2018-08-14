@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/14 10:27:43 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/14 16:19:34 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ t_lemin			get_map(void)
 {
 	t_lemin		map;
 
-	map.map = (char **)malloc(sizeof(char *) * 2000);
 	map.map = malloc_2d(map.map);
 	map.s = 0;
 	while (get_next_line(0, &map.first))

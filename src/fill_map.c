@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 16:13:45 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/14 13:32:59 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/14 16:22:03 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			*name_val(char **map, char *str)
 	k = 0;
 	j = 0;
 	arr = ft_strsplit(str, '-');
-	if (ft_strcmp (arr[0], arr[1]) == 0)
+	if (ft_strcmp(arr[0], arr[1]) == 0)
 		std_err(": room cannot link to itself.\n");
 	while (arr[k] && map[j])
 	{
@@ -58,11 +58,26 @@ int			*name_val(char **map, char *str)
 	return (k == 2 ? place : 0);
 }
 
-int		**fill_array(int *place, int **intarr)
+int			**fill_array(int *place, int **intarr)
 {
 	intarr[place[0]][place[1]] = 1;
 	intarr[place[1]][place[0]] = 1;
 	return (intarr);
+}
+
+void		print(int **intarr, int *place)
+{
+	printf("<<<<%d ", place[0]);
+	printf("%d>>>>\n", place[1]);
+	printf("%d ", intarr[0][0]);
+	printf("%d ", intarr[0][1]);
+	printf("%d\n", intarr[0][2]);
+	printf("%d ", intarr[1][0]);
+	printf("%d ", intarr[1][1]);
+	printf("%d\n", intarr[1][2]);
+	printf("%d ", intarr[2][0]);
+	printf("%d ", intarr[2][1]);
+	printf("%d\n", intarr[2][2]);
 }
 
 void		link_val(t_lemin map)
@@ -77,28 +92,17 @@ void		link_val(t_lemin map)
 	intarr = malloc_2d_int(map.s);
 	while (ret)
 	{
-	if (dash_cnt(map.first) != 1)
-		std_err(": invalid link. Too many dashes.\n");
-	if ((place = name_val(map.map, map.first)) == 0)
-		std_err(": bad link. Links to non existing room.\n");
-	else
-	{
-		ret = get_next_line(0, &map.first);
-		intarr = fill_array(place,intarr);
-		i++;
+		if (dash_cnt(map.first) != 1)
+			std_err(": invalid link. Too many dashes.\n");
+		if ((place = name_val(map.map, map.first)) == 0)
+			std_err(": bad link. Links to non existing room.\n");
+		else
+		{
+			ret = get_next_line(0, &map.first);
+			intarr = fill_array(place, intarr);
+			i++;
+		}
 	}
-	}
-		printf("<<<<%d ", place[0]);
-		printf("%d>>>>\n", place[1]);
-		printf("%d ", intarr[0][0]);
-		printf("%d ", intarr[0][1]);
-		printf("%d\n", intarr[0][2]);
-		printf("%d ", intarr[1][0]);
-		printf("%d ", intarr[1][1]);
-		printf("%d\n", intarr[1][2]);
-		printf("%d ", intarr[2][0]);
-		printf("%d ", intarr[2][1]);
-		printf("%d\n", intarr[2][2]);
-
+	print(intarr, place);
 	exit(0);
 }
