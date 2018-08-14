@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:56:54 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/13 17:46:28 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/14 10:14:07 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		check_invalid(char *str)
 	}
 	return (0);
 }
+
 int		get_number(void)
 {
 	int		ret;

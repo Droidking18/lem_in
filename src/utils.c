@@ -6,11 +6,12 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 12:06:19 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/13 17:45:53 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/14 10:36:53 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lemin.h"
+#include <stdio.h>
 
 void	std_err(char *str)
 {
@@ -45,4 +46,20 @@ char	**malloc_2d(char **map)
 		i++;
 	}
 	return (map);
+}
+
+int		**malloc_2d_int(int size)
+{
+	int		**arr;
+	int 	i;
+
+	i = 0;
+	arr = (int **)malloc(sizeof(int *) * size);
+	while (i < size)
+	{
+		printf("loop%d\n", i);
+		arr[i] = (int *)malloc(sizeof(int) * size);
+		i++;
+	}
+	return (arr);
 }

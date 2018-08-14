@@ -6,14 +6,14 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/13 17:47:42 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/14 10:27:43 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lemin.h"
 #include <stdio.h>
 
-int		space_count(char *str)
+int				space_count(char *str)
 {
 	int		i;
 	int		j;
@@ -29,20 +29,20 @@ int		space_count(char *str)
 	return (j);
 }
 
-int		name_check(char *str)
+int				name_check(char *str)
 {
 	int	i;
 
 	i = 0;
 	if (space_count(str) != 2)
-		std_err(": incorrect amount of spaces.\n");
+		return (0);
 	while (str[i] != ' ')
 		i++;
 	i++;
 	while (ft_isdigit(str[i]) == 1)
 	{
 		if (ft_isdigit(str[i] == 0 && str[i] != ' '))
-				std_err(": coords must be digits.\n");
+			std_err(": coords must be digits.\n");
 		i++;
 	}
 	i++;
@@ -53,36 +53,35 @@ int		name_check(char *str)
 	return (1);
 }
 
-char	*get_name(char *str)
+char			*get_name(char *str)
 {
 	return ((ft_strsplit(str, ' '))[0]);
 }
 
-t_lemin		get_map(void)
+t_lemin			get_map(void)
 {
 	t_lemin		map;
-	int			j;
 
 	map.map = (char **)malloc(sizeof(char *) * 2000);
 	map.map = malloc_2d(map.map);
-	j = 0;
+	map.s = 0;
 	while (get_next_line(0, &map.first))
 	{
-		map.map[j][0] = ' ';
+		map.map[map.s][0] = ' ';
 		if (name_check(map.first) == 1)
 		{
-			map.map[j] = ft_strjoin(map.map[j], get_name(map.first));
-			j++;
+			map.map[map.s] = ft_strjoin(map.map[map.s], get_name(map.first));
+			map.s++;
 		}
 		else if (check_comment(map.first) == 2)
-			map.map[j] = "#";
+			map.map[map.s] = "#";
 		else if (check_comment(map.first) == 3)
-			map.map[j] = "L";
+			map.map[map.s] = "L";
 		else if (check_comment(map.first) == 1 || check_comment(map.first) == 4)
-			j++;
+			map.s++;
 		else
 		{
-			map.map[j] = 0;
+			map.map[map.s] = 0;
 			link_val(map);
 		}
 	}

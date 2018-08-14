@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 16:13:45 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/13 17:47:10 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/14 13:32:59 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,47 +29,76 @@ int			dash_cnt(char *str)
 	return (j);
 }
 
-int			name_val(char **map, char *str)
+int			*name_val(char **map, char *str)
 {
-	int	j;
-	int	k;
-	int ret;
-	char **arr;
+	int		j;
+	int		k;
+	char	**arr;
+	int		*place;
 
+	place = (int*)malloc(sizeof(int) * 2);
 	k = 0;
 	j = 0;
 	arr = ft_strsplit(str, '-');
+	if (ft_strcmp (arr[0], arr[1]) == 0)
+		std_err(": room cannot link to itself.\n");
 	while (arr[k] && map[j])
 	{
 		j = 0;
 		while (map[j])
 		{
-			ret = ft_strcmp(arr[k], &(map[j][1]));
-			if (ret == 0)
+			if (ft_strcmp(arr[k], &(map[j][1])) == 0)
 			{
-				k++;
+				place[k++] = j;
 				break ;
 			}
 			j++;
 		}
 	}
-	return (k == 2 ? 1 : 0);
+	return (k == 2 ? place : 0);
 }
 
-void			link_val(t_lemin map)
+int		**fill_array(int *place, int **intarr)
 {
+	intarr[place[0]][place[1]] = 1;
+	intarr[place[1]][place[0]] = 1;
+	return (intarr);
+}
+
+void		link_val(t_lemin map)
+{
+	int **intarr;
+	int ret;
+	int i;
+	int *place;
+
+	i = 0;
+	ret = 1;
+	intarr = malloc_2d_int(map.s);
+	while (ret)
+	{
 	if (dash_cnt(map.first) != 1)
 		std_err(": invalid link. Too many dashes.\n");
-	if (name_val(map.map, map.first) == 0)
+	if ((place = name_val(map.map, map.first)) == 0)
 		std_err(": bad link. Links to non existing room.\n");
 	else
 	{
-		ft_putstr("Linking is OK");
-		exit(0);
+		ret = get_next_line(0, &map.first);
+		intarr = fill_array(place,intarr);
+		i++;
 	}
-}
+	}
+		printf("<<<<%d ", place[0]);
+		printf("%d>>>>\n", place[1]);
+		printf("%d ", intarr[0][0]);
+		printf("%d ", intarr[0][1]);
+		printf("%d\n", intarr[0][2]);
+		printf("%d ", intarr[1][0]);
+		printf("%d ", intarr[1][1]);
+		printf("%d\n", intarr[1][2]);
+		printf("%d ", intarr[2][0]);
+		printf("%d ", intarr[2][1]);
+		printf("%d\n", intarr[2][2]);
 
-t_lemin			fill_map(t_lemin map)
-{
-	return (map);
+	exit(0);
 }
