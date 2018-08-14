@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/14 16:19:34 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/14 16:48:27 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ int				name_check(char *str)
 	while (ft_isdigit(str[i]) == 1)
 	{
 		if (ft_isdigit(str[i] == 0 && str[i] != ' '))
-			std_err(": coords must be digits.\n");
+			std_err("\e[0;31m : coords must be digits.\n");
 		i++;
 	}
 	i++;
 	while (ft_isdigit(str[i]) == 1)
 		i++;
 	if (str[i])
-		std_err(": bad coordinates.\n");
+		std_err("\e[0;31m : bad coordinates.\n");
 	return (1);
 }
 
