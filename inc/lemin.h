@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:58:54 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/14 10:45:08 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/15 13:18:44 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ char			**malloc_2d(char **map);
 void			link_val(t_lemin map);
 t_lemin			fill_map(t_lemin map);
 int				**malloc_2d_int(int size);
+void			complete_int_map(t_lemin map, int **intmap);
 
 #endif

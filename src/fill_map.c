@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 16:13:45 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/14 16:49:00 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/15 14:41:13 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ void		link_val(t_lemin map)
 			i++;
 		}
 	}
-	print(intarr, place);
+	complete_int_map(map, intarr);
 	exit(0);
 }

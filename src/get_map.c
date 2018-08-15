@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/14 16:48:27 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/15 15:11:50 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,23 @@ t_lemin			get_map(void)
 	map.s = 0;
 	while (get_next_line(0, &map.first))
 	{
-		map.map[map.s][0] = ' ';
+		if (map.map[map.s][0] != '#' && map.map[map.s][0] != 'L')
+			map.map[map.s][0] = ' ';
 		if (name_check(map.first) == 1)
 		{
-			map.map[map.s] = ft_strjoin(map.map[map.s], get_name(map.first));
+			map.map[map.s] = ft_strcat(map.map[map.s], get_name(map.first));
 			map.s++;
 		}
 		else if (check_comment(map.first) == 2)
-			map.map[map.s] = "#";
+		{
+			map.map[map.s][0] = '#';                 /// PROBLEM LINE
+		}
 		else if (check_comment(map.first) == 3)
-			map.map[map.s] = "L";
+			map.map[map.s][0] = 'L';                 /// PROBLEM LINE
 		else if (check_comment(map.first) == 1 || check_comment(map.first) == 4)
 			map.s++;
 		else
-		{
-			map.map[map.s] = 0;
 			link_val(map);
-		}
 	}
 	return (map);
 }

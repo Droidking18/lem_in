@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 12:06:19 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/14 16:50:32 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/15 14:41:21 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**malloc_2d(char **map)
 	while (i < 2001)
 	{
 		map[i] = (char *)malloc(sizeof(char) * 200);
-		ft_bzero(map[i], 200);
+		//map[i] = 0;
 		i++;
 	}
 	return (map);
@@ -59,8 +59,7 @@ int		**malloc_2d_int(int size)
 	arr = (int **)malloc(sizeof(int *) * size);
 	while (i < size)
 	{
-		printf("loop%d\n", i);
-		arr[i] = (int *)malloc(sizeof(int) * size);
+		arr[i] = (int *)malloc(sizeof(int) * size + 1);
 		i++;
 	}
 	return (arr);
