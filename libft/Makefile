@@ -6,7 +6,7 @@
 #    By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 08:35:13 by dkaplan           #+#    #+#              #
-#    Updated: 2018/06/18 12:41:09 by dkaplan          ###   ########.fr        #
+#    Updated: 2018/08/16 08:39:10 by dkaplan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,16 +28,16 @@ CSOURCE = $(SOURCES:.c=.o)
 INCLUDES = libft.h
 
 $(NAME):
-	gcc -Wall -Werror -Wextra -I.. $(INCLUDES) -c $(SOURCES)
-	ar rc $(NAME) $(CSOURCE)
-	ranlib $(NAME)
+	@gcc -Wall -Werror -Wextra -I.. $(INCLUDES) -c $(SOURCES)
+	@ar rc $(NAME) $(CSOURCE)
+	@ranlib $(NAME)
 
 all: $(NAME)
 
 clean:
-	rm -f $(CSOURCE)
+	@rm -f $(CSOURCE)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
