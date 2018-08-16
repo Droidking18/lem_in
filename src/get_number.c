@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:56:54 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/16 10:13:11 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/16 17:08:49 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,31 @@ int		check_invalid(char *str)
 	return (0);
 }
 
-int		get_number(void)
+t_lemin		get_number(void)
 {
-	int		ret;
-	long	ant;
-	char	*str;
+	t_lemin	map;
 
-	ret = 1;
-	ant = 0;
-	while (get_next_line(0, &str) && ret)
+	map.count[0] = 0;
+	map.in = malloc_2d(map.in);
+	map.ant = 0;
+	while (get_next_line(0, &map.in[map.count[0]]))
 	{
-		if (check_comment(str) == 1 || check_comment(str) == 4)
-			ant = 0;
-		else if (check_invalid(str) == 1)
+		if (check_comment(map.in[map.count[0]]) == 1 
+				|| check_comment(map.in[map.count[0]]) == 4)
+		{
+			map.count[0]++;
+			map.ant = 0;
+		}
+		else if (check_invalid(map.in[map.count[0]]) == 1)
 			std_err(red" : number of ants must be a digit.\n");
 		else
 		{
-			ant = ft_atoi(str);
-			free(str);
+			map.ant = ft_atoi(map.in[map.count[0]]);
 			break ;
 		}
-		free(str);
 	}
-	if (ant > 2147483647 || ant < -2147483648 || !ant)
+	map.count[0]++;
+	if (map.ant > 2147483647 || map.ant < -2147483648 || !map.ant)
 		std_err(red" : ants can not overflow, nor can they be 0.\n");
-	return ((int)ant);
+	return (map);
 }

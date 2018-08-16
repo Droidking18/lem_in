@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 16:13:45 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/16 10:14:05 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/16 17:01:26 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,16 +89,21 @@ void		link_val(t_lemin map)
 
 	i = 0;
 	ret = 1;
+	printf(">>>>>>>>>>>%d\n", map.count[0]);
 	intarr = malloc_2d_int(map.s);
 	while (ret)
 	{
-		if (dash_cnt(map.first) != 1)
+		if (dash_cnt(map.in[map.count[0]]) != 1)
+		{
+			printf(":%s\n", map.in[map.count[0]]);
 			std_err(red" : invalid link. Wrong format.\n");
-		if ((place = name_val(map.map, map.first)) == 0)
+		}
+		if ((place = name_val(map.map, map.in[map.count[0]])) == 0)
 			std_err(red" : bad link. Links to non existing room.\n");
 		else
 		{
-			ret = get_next_line(0, &map.first);
+			map.count[0]++;
+			ret = get_next_line(0, &map.in[map.count[0]]);
 			intarr = fill_array(place, intarr);
 			i++;
 		}

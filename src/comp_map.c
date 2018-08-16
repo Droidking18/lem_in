@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 13:19:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/15 15:01:49 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/16 17:09:03 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void		complete_int_map(t_lemin map, int **intmap)
 {
 	int i = 0;
 	(void)intmap;
-	while (i < map.s)
+	while (i < map.count[0])
 	{
-		printf("%s\n", map.map[i]);
+		printf(">>%s\n", map.in[i]);
 		i++;
 	}
 }
