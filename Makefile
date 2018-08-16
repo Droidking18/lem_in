@@ -6,7 +6,7 @@
 #    By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/26 14:50:13 by dkaplan           #+#    #+#              #
-#    Updated: 2018/08/16 08:45:17 by dkaplan          ###   ########.fr        #
+#    Updated: 2018/08/16 08:55:12 by dkaplan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,5 +36,11 @@ fclean: clean
 	@echo "${YELLOW}[${GREEN}REMOVING LIBFT OBJECT FILES${YELLOW}]"
 	@rm -f $(NAME)
 	@echo "${YELLOW}[${GREEN}REMOVING LEM-IN${YELLOW}]"
+
+make:
+	@echo "${YELLOW}[${GREEN}MAKING MAKE...${YELLOW}]"
+	@sleep 1
+	@cp Makefile ./Makefile.cp
+	@echo "${YELLOW}[${GREEN}NOT REALLY SURE WHY YOU'D WANT THAT BUT THERE YOU GO...${YELLOW}]"
 
 re: fclean all
