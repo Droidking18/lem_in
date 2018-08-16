@@ -6,13 +6,14 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:58:54 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/15 13:18:44 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/16 08:58:21 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEMIN_H
 # define LEMIN_H
 # include "../libft/libft.h"
+# define red "\e[0;31m"
 
 typedef struct	s_lemin
 {

@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 16:13:45 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/15 14:41:13 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/16 10:14:05 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			*name_val(char **map, char *str)
 	j = 0;
 	arr = ft_strsplit(str, '-');
 	if (ft_strcmp(arr[0], arr[1]) == 0)
-		std_err("\e[0;31m : room cannot link to itself.\n");
+		std_err(red" : room cannot link to itself.\n");
 	while (arr[k] && map[j])
 	{
 		j = 0;
@@ -93,9 +93,9 @@ void		link_val(t_lemin map)
 	while (ret)
 	{
 		if (dash_cnt(map.first) != 1)
-			std_err("\e[0;31m : invalid link. Wrong format.\n");
+			std_err(red" : invalid link. Wrong format.\n");
 		if ((place = name_val(map.map, map.first)) == 0)
-			std_err("\e[0;31m : bad link. Links to non existing room.\n");
+			std_err(red" : bad link. Links to non existing room.\n");
 		else
 		{
 			ret = get_next_line(0, &map.first);

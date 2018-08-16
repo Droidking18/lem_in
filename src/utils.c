@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 12:06:19 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/15 14:41:21 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/16 10:14:32 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	std_err(char *str)
 {
-	ft_putstr_fd("\e[1;31mError", 2);
+	ft_putstr_fd(red"Error", 2);
 	ft_putstr_fd("\a", 2);
 	ft_putstr_fd(str, 2);
 	exit(0);
