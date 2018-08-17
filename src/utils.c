@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 12:06:19 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/17 09:15:31 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/17 11:29:45 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	std_err(char *str)
 {
-	ft_putstr_fd(red"Error", 2);
+	ft_putstr_fd(RED"Error", 2);
 	ft_putstr_fd("\a", 2);
 	ft_putstr_fd(str, 2);
 	exit(0);
@@ -44,7 +44,6 @@ char	**malloc_2d(char **map)
 	while (i < 2001)
 	{
 		map[i] = (char *)malloc(sizeof(char) * 200);
-		//map[i] = 0;
 		i++;
 	}
 	return (map);

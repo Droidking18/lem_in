@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/17 08:49:28 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/17 11:28:23 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ int				name_check(char *str)
 	while (ft_isdigit(str[i]) == 1)
 	{
 		if (ft_isdigit(str[i] == 0 && str[i] != ' '))
-			std_err(red" : coords must be digits.\n");
+			std_err(RED" : coords must be digits.\n");
 		i++;
 	}
 	i++;
 	while (ft_isdigit(str[i]) == 1)
 		i++;
 	if (str[i])
-		std_err(red" : bad coordinates.\n");
+		std_err(RED" : bad coordinates.\n");
 	return (1);
 }
 
@@ -60,14 +60,8 @@ char			*get_name(char *str)
 
 t_lemin			get_map(t_lemin m)
 {
-	//t_lemin		m;
-
-	//m.in = malloc_2d(m.in);
 	m.map = malloc_2d(m.map);
 	m.s = 0;
-	//map.count = 1;
-	//printf("<<<%s>>>>\n\n", m.in[0]);
-	//printf("first%d>>>\n", m.count[0]);
 	while (get_next_line(0, &m.in[m.count[0]]))
 	{
 		if (m.map[m.s][0] != '#' && m.map[m.s][0] != 'L')
@@ -78,7 +72,7 @@ t_lemin			get_map(t_lemin m)
 			m.map[m.s][0] = '#';
 		else if (check_comment(m.in[m.count[0]]) == 3)
 			m.map[m.s][0] = 'L';
-		else if (check_comment(m.in[m.count[0]]) == 1 
+		else if (check_comment(m.in[m.count[0]]) == 1
 				|| check_comment(m.in[m.count[0]]) == 4)
 			m.s++;
 		else
