@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/16 16:54:53 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/17 08:49:28 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,16 @@ char			*get_name(char *str)
 	return ((ft_strsplit(str, ' '))[0]);
 }
 
-t_lemin			get_map(void)
+t_lemin			get_map(t_lemin m)
 {
-	t_lemin		m;
+	//t_lemin		m;
 
-	m.in = malloc_2d(m.in);
+	//m.in = malloc_2d(m.in);
 	m.map = malloc_2d(m.map);
 	m.s = 0;
 	//map.count = 1;
-		printf("first%d>>>\n", m.count[0]);
+	//printf("<<<%s>>>>\n\n", m.in[0]);
+	//printf("first%d>>>\n", m.count[0]);
 	while (get_next_line(0, &m.in[m.count[0]]))
 	{
 		if (m.map[m.s][0] != '#' && m.map[m.s][0] != 'L')
@@ -81,9 +82,7 @@ t_lemin			get_map(void)
 				|| check_comment(m.in[m.count[0]]) == 4)
 			m.s++;
 		else
-		{
 			link_val(m);
-		}
 		m.count[0]++;
 	}
 	return (m);

@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:08:57 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/16 11:12:27 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/17 08:29:55 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ int		main(void)
 	t_lemin	map;
 
 	map = get_number();
-	map = get_map();
-	(void)map;
+	map = get_map(map);
 }

@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:58:54 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/16 16:45:15 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/17 08:17:05 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_lemin			get_number(void);
 void			std_err(char *str);
 int				check_comment(char *str);
 int				check_valid(char *str);
-t_lemin			get_map(void);
+t_lemin			get_map(t_lemin map);
 char			**malloc_2d(char **map);
 void			link_val(t_lemin map);
 t_lemin			fill_map(t_lemin map);

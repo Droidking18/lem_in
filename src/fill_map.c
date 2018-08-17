@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 16:13:45 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/16 17:01:26 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/17 09:28:06 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,29 +84,22 @@ void		link_val(t_lemin map)
 {
 	int **intarr;
 	int ret;
-	int i;
 	int *place;
+	int comment;
 
-	i = 0;
 	ret = 1;
-	printf(">>>>>>>>>>>%d\n", map.count[0]);
 	intarr = malloc_2d_int(map.s);
 	while (ret)
 	{
-		if (dash_cnt(map.in[map.count[0]]) != 1)
-		{
-			printf(":%s\n", map.in[map.count[0]]);
+		comment = check_comment(map.in[map.count[0]]);
+		if (comment == 4 || comment == 1)
+				;
+		else if (dash_cnt(map.in[map.count[0]]) != 1 && comment == 0)
 			std_err(red" : invalid link. Wrong format.\n");
-		}
-		if ((place = name_val(map.map, map.in[map.count[0]])) == 0)
-			std_err(red" : bad link. Links to non existing room.\n");
-		else
-		{
-			map.count[0]++;
-			ret = get_next_line(0, &map.in[map.count[0]]);
-			intarr = fill_array(place, intarr);
-			i++;
-		}
+		else if ((place = name_val(map.map, map.in[map.count[0]])) == 0 && comment == 0)
+			std_err(red" : bad link. Links to non existing room.\n");		
+		ret = get_next_line(0, &map.in[++map.count[0]]);
+		intarr = fill_array(place, intarr);
 	}
 	complete_int_map(map, intarr);
 	exit(0);
