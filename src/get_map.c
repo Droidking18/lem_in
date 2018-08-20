@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/17 11:28:23 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/20 12:42:23 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ t_lemin			get_map(t_lemin m)
 			link_val(m);
 		m.count[0]++;
 	}
+	std_err(RED" : insufficient data.\n");	
 	return (m);
 }

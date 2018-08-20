@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/06 11:08:57 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/20 09:30:49 by dkaplan          ###   ########.fr       */
+/*   Created: 2018/08/20 14:30:05 by dkaplan           #+#    #+#             */
+/*   Updated: 2018/08/20 16:19:47 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/lemin.h"
-#include <stdio.h>
-
-int		main(void)
+void		push(int *stack, int *top, int nxt_room)
 {
-	t_lemin	map;
+	(*top)++;
+	stack[*top] = nxt_room;
+}
 
-	map = get_number();
-	map = get_map(map);
+void		pop(int *top)
+{
+	(*top)--;
 }

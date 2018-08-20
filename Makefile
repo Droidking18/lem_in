@@ -6,7 +6,7 @@
 #    By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/26 14:50:13 by dkaplan           #+#    #+#              #
-#    Updated: 2018/08/16 17:10:30 by dkaplan          ###   ########.fr        #
+#    Updated: 2018/08/20 17:33:43 by dkaplan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ YELLOW = \033[0;33m
 
 NAME = lem-in
 SOURCES = src/get_map.c src/get_number.c src/lem_in.c src/utils.c \
-			src/fill_map.c src/comp_map.c
+			src/fill_map.c src/comp_map.c src/stack.c
 INCLUDES = libft/libft.a
 
 $(NAME):
