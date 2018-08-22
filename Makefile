@@ -6,7 +6,7 @@
 #    By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/26 14:50:13 by dkaplan           #+#    #+#              #
-#    Updated: 2018/08/20 17:33:43 by dkaplan          ###   ########.fr        #
+#    Updated: 2018/08/21 12:53:54 by dkaplan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INCLUDES = libft/libft.a
 $(NAME):
 	@make -C libft
 	@echo "${YELLOW}[${GREEN}BUILDING LIBFT${YELLOW}]"
-	@sleep 5
+	@sleep 0
 	@echo "${YELLOW}[${GREEN}SORRY IF I'M SLOW, I'M ONLY A MAC${YELLOW}]"
 	@sleep 1
 	@gcc -Wall -Werror -Wextra $(SOURCES) $(INCLUDES) -o $(NAME)

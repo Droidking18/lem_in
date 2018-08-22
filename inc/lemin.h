@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:58:54 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/20 17:33:23 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/21 16:56:21 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ typedef struct	s_lemin
 	int				st;
 	int				en;
 }				t_lemin;
+typedef struct	s_stack
+{
+	int				*stack;
+	int				top;
+}				t_stack;
 t_lemin			get_number(void);
 void			std_err(char *str);
 int				check_comment(char *str);
