@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 12:06:19 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/20 12:41:30 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/23 14:41:47 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,27 @@ int		**malloc_2d_int(int size)
 		i++;
 	}
 	return (arr);
+}
+
+void	print_ants(int *path, int size, char **map, int ants)
+{
+	int i;
+	int j;
+
+	j = 1;
+	i = 0;
+	while (j <= ants)
+	{
+		while (i <= size)
+		{
+			ft_putstr("L");
+			ft_putnbr(j);
+			ft_putstr("-");
+			ft_putstr(map[path[i]] + 1);
+			ft_putstr("\n");
+			i++;
+		}
+		j++;
+		i = 0;
+	}
 }

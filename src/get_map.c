@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/21 13:00:11 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/23 14:55:14 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int				space_count(char *str)
 			j++;
 		i++;
 	}
+	if (ft_isdigit(str[i - 1]) == 0)
+		return (69);
 	return (j);
 }
 
@@ -34,6 +36,8 @@ int				name_check(char *str)
 	int	i;
 
 	i = 0;
+	if (space_count(str) == 69 && !check_comment(str))
+		return (0);
 	if (space_count(str) != 2)
 		return (0);
 	while (str[i] != ' ')
@@ -41,7 +45,7 @@ int				name_check(char *str)
 	i++;
 	while (ft_isdigit(str[i]) == 1)
 	{
-		if (ft_isdigit(str[i] == 0 && str[i] != ' '))
+		if (ft_isdigit(str[i]) == 0 && str[i] != ' ')
 			std_err(RED" : coords must be digits.\n");
 		i++;
 	}
@@ -79,6 +83,6 @@ t_lemin			get_map(t_lemin m)
 			link_val(m);
 		m.count[0]++;
 	}
-	std_err(RED" : insufficient data.\n");	
+	std_err(RED" : insufficient data.\n");
 	return (m);
 }

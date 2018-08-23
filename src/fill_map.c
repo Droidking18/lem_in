@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 16:13:45 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/21 12:57:06 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/23 14:21:20 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int			dash_cnt(char *str)
 			j++;
 		i++;
 	}
-	return (j);
+	if (str[i - 1])
+		return (j);
+	else
+		return (0);
 }
 
 int			*name_val(char **map, char *str)

@@ -6,22 +6,12 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 13:19:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/23 08:32:31 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/23 14:57:24 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lemin.h"
 #include <stdio.h>
-
-void		print_int_arr(int *arr, int size)
-{
-	int i = 0;
-	while (i <= size)
-	{
-		printf("%d - ", arr[i]);
-		i++;
-	}
-}
 
 t_lemin		map_check(t_lemin *map)
 {
@@ -52,30 +42,12 @@ t_lemin		map_check(t_lemin *map)
 	return (*map);
 }
 
-void		print_matrix(int **intmap, int size)
-{
-	int i = 0;
-	int j = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (j < size)
-		{
-			printf("%d ", intmap[i][j]);
-			j++;
-		}
-		i++;
-	}
-}
-
-int		intro_path_finder(int **stack, int *top, int start, int size)
+int			intro_path_finder(int **stack, int *top, int start, int size)
 {
 	*stack = malloc(sizeof(int) * size * size);
 	*top = -1;
 	return (start);
 }
-
-
 
 t_stack		path_find_iter(int **map, int start, int end, int size)
 {
@@ -107,33 +79,19 @@ t_stack		path_find_iter(int **map, int start, int end, int size)
 
 void		complete_int_map(t_lemin map, int **intmap)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 	t_stack stack;
 
 	j = 0;
 	i = 0;
 	map_check(&map);
 	stack = path_find_iter(intmap, map.st, map.en, map.s);
-	printf("%d", stack.i);
-	print_int_arr(stack.stack, stack.top);
-	printf("HERE YOU GO --- %d, %d --- \n", map.st, map.en);
-	/*while (i < map.s)
+	while (i < map.count[0])
 	{
-		printf("%s\n", map.map[i]);
+		ft_putendl(map.in[i]);
 		i++;
 	}
-	i = 0;
-	printf("%lu\n", map.ant);
-	while (i < map.s)
-	{
-		while (j < map.s)
-		{
-			printf("%d ", intmap[i][j]);
-			j++;
-		}
-	i++;
-	j = 0;
-	printf("\n");
-	}*/
+	write(1, "\n\n", 2);
+	print_ants(stack.stack, stack.top, map.map, map.ant);
 }
