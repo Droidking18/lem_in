@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 13:19:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/22 17:24:37 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/23 08:32:31 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,69 +77,48 @@ int		intro_path_finder(int **stack, int *top, int start, int size)
 
 
 
-void		path_find_iter(int **map, int start, int end, int size)
+t_stack		path_find_iter(int **map, int start, int end, int size)
 {
-	int i;
-	int	j;
-	int *stack;
-	int	top;
+	t_stack s;
 
-	i = intro_path_finder(&stack, &top, start, size);
-	while (i != end)
+	s.i = intro_path_finder(&s.stack, &s.top, start, size);
+	while (s.i != end)
 	{
-		j = 0;
-		while (j <= size - 1)
+		s.j = 0;
+		while (s.j <= size - 1)
 		{
-			if (map[i][j] == 1)
+			if (map[s.i][s.j] == 1)
 			{
-				push(stack, &top, j);
-				map[i][j] = 0;
-				i = j;
+				push(s.stack, &s.top, s.j);
+				map[s.i][s.j] = 0;
+				s.i = s.j;
 			}
-			else if (map[i][j] == 0 && j == size - 1)
+			else if (map[s.i][s.j] == 0 && s.j == size - 1)
 			{
-				pop(&top);
-				i = stack[top];
+				pop(&s.top);
+				s.i = s.stack[s.top];
 				break ;
 			}
-			j = map[i][j] == 1 ? 0 : j + 1;
+			s.j = map[s.i][s.j] == 1 ? 0 : s.j + 1;
 		}
-	//	break ;
 	}
-	print_int_arr(stack, top);
-	printf(">>>%d\n", top);
+	return (s);
 }
-
-/*void		path_find_rec(int **intmap, int i, t_stack *stack, t_lemin map)
-{
-	int		cntr;
-
-	cntr = 0;
-	while (cntr < map.s)
-	{
-		if (intmap[i][cntr] == 1)
-			path_find_rec(intmap, cntr, stack, map);
-		++cntr;
-	}
-	if (intmap[i][cntr] == 0)
-		return ;
-}*/
 
 void		complete_int_map(t_lemin map, int **intmap)
 {
 	int i;
 	int j;
 	t_stack stack;
-	int top;
 
-	top = 0;
-	stack.stack = malloc(sizeof(t_stack) * map.s * map.s);
 	j = 0;
 	i = 0;
 	map_check(&map);
-	path_find_iter(intmap, map.st, map.en, map.s);
+	stack = path_find_iter(intmap, map.st, map.en, map.s);
+	printf("%d", stack.i);
+	print_int_arr(stack.stack, stack.top);
 	printf("HERE YOU GO --- %d, %d --- \n", map.st, map.en);
-	while (i < map.s)
+	/*while (i < map.s)
 	{
 		printf("%s\n", map.map[i]);
 		i++;
@@ -156,5 +135,5 @@ void		complete_int_map(t_lemin map, int **intmap)
 	i++;
 	j = 0;
 	printf("\n");
-	}
+	}*/
 }
