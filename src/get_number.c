@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:56:54 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/20 12:56:57 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/24 11:53:10 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int				check_invalid(char *str)
 	int i;
 
 	i = 0;
+	if (ft_strcmp(str, "squish all") == 0)
+		std_err(RED" : all ants are now dead. Hope you're happy.\n");
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]) == 0)
