@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/23 14:55:14 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/24 10:42:42 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int				space_count(char *str)
 			j++;
 		i++;
 	}
-	if (ft_isdigit(str[i - 1]) == 0)
+	if (ft_isdigit(str[i - 1]) == 0 || str[0] == ' ')
 		return (69);
 	return (j);
 }
