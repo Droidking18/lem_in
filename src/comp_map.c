@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 13:19:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/24 12:01:09 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/27 09:17:41 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_stack		path_find_iter(int **map, int start, int end, int size)
 		{
 			if (map[s.i][s.j] == 1)
 			{
-				push(s.stack, &s.top, s.j);
+				push(s.stack, &s.top, s.j, &s.swtch);
 				map[s.i][s.j] = 0;
 				s.i = s.j;
 			}
@@ -71,10 +71,24 @@ t_stack		path_find_iter(int **map, int start, int end, int size)
 				s.i = s.stack[s.top];
 				break ;
 			}
-			s.j = map[s.i][s.j] == 1 ? 0 : s.j + 1;
+			reset(&s.swtch, &s.j);
 		}
 	}
 	return (s);
+}
+
+t_stack		stack_fix(t_stack stack, int en)
+{
+	int i;
+
+	i = 0;
+	while (i < stack.top)
+	{
+		if (stack.stack[i] == en)
+			stack.top = i;
+		i++;
+	}
+	return (stack);
 }
 
 void		complete_int_map(t_lemin map, int **intmap)
@@ -87,6 +101,8 @@ void		complete_int_map(t_lemin map, int **intmap)
 	i = 0;
 	map_check(&map);
 	stack = path_find_iter(intmap, map.st, map.en, map.s);
+	stack = stack_fix(stack, map.en);
+	printf("\n<<<<<<<<<<<<<<<<<<%d\n", map.en);
 	while (i < map.count[0])
 	{
 		ft_putendl(map.in[i]);

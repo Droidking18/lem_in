@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 11:58:54 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/23 14:27:14 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/27 09:02:03 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct	s_stack
 	int				top;
 	int				i;
 	int				j;
+	int				swtch;
 }				t_stack;
 t_lemin			get_number(void);
 void			std_err(char *str);
@@ -44,8 +45,9 @@ void			link_val(t_lemin map);
 t_lemin			fill_map(t_lemin map);
 int				**malloc_2d_int(int size);
 void			complete_int_map(t_lemin map, int **intmap);
-void			push(int *stack, int *top, int nxt_room);
+void			push(int *stack, int *top, int nxt_room, int *swtch);
 void			pop(int *top);
 void			print_ants(int *path, int size, char **map, int ants);
+void			reset(int *swtch, int *j);
 
 #endif
