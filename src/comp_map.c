@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 13:19:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/27 09:17:41 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/27 11:33:36 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void		complete_int_map(t_lemin map, int **intmap)
 	map_check(&map);
 	stack = path_find_iter(intmap, map.st, map.en, map.s);
 	stack = stack_fix(stack, map.en);
-	printf("\n<<<<<<<<<<<<<<<<<<%d\n", map.en);
 	while (i < map.count[0])
 	{
 		ft_putendl(map.in[i]);
