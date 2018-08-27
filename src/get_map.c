@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:13:48 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/08/24 10:42:42 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/08/27 12:08:48 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_lemin			get_map(t_lemin m)
 			m.map[m.s][0] = 'L';
 		else if (check_comment(m.in[m.count[0]]) == 1
 				|| check_comment(m.in[m.count[0]]) == 4)
-			m.s++;
+			m.s = m.s;
 		else
 			link_val(m);
 		m.count[0]++;
